@@ -255,6 +255,7 @@ module Earthquake
     end
 
     def notify(message, options = {})
+      return if config[:no_notify]
       title = options.delete(:title) || 'earthquake'
       message = message.is_a?(String) ? message : message.inspect
       Notify.notify title, message, options
